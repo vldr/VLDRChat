@@ -17,16 +17,6 @@ vldrChatQt::vldrChatQt(QWidget *parent) : QMainWindow(parent)
 	// Make the window not resizable.
 	setWindowFlags(Qt::Window | Qt::MSWindowsFixedSizeDialogHint | Qt::WindowCloseButtonHint);
 
-	// Question user for ip address.
-	bool ok;
-	QString text = QInputDialog::getText(this, tr("IP Address: "),
-		tr("Please enter a ip address:"), QLineEdit::Normal,
-		"", &ok);
-
-	// Check if it's okay...
-	if (ok && !text.isEmpty())
-		ip = text;
-
 	// Initalize QScrollBar and set a custom stylesheet to it.
 	QScrollBar * customScrollBarChatBox = new QScrollBar();
 	QScrollBar * customScrollBarUserList = new QScrollBar();
@@ -43,8 +33,8 @@ vldrChatQt::vldrChatQt(QWidget *parent) : QMainWindow(parent)
 	// Check the set the proxy.
 	_pSocket->setProxy(QNetworkProxy::NoProxy);
 	
-	// Attempt to connect.
-	_pSocket->connectToHost(ip, port);
+	// Display initial login page.
+	OpenLoginPage();
 
 	// Connect the enter button to send message.
 	connect(ui.messageBox, &QLineEdit::returnPressed, [this] {
@@ -65,10 +55,38 @@ vldrChatQt::vldrChatQt(QWidget *parent) : QMainWindow(parent)
 	connect(_pSocket, &QTcpSocket::readyRead, [this] {
 		ProcessCommands();
 	});
+}
+
+// Display login page
+void vldrChatQt::OpenLoginPage() {
+	// Question user for ip address.
+	bool ok;
+	QString text = QInputDialog::getText(this, tr("Please enter an address!"),
+		tr("Please enter a ip address:"), QLineEdit::Normal,
+		"", &ok);
+
+	// Check if it's okay...
+	if (ok && !text.isEmpty())
+		ip = text;
+
+	// Attempt to connect.
+	_pSocket->connectToHost(ip, port);
 
 	// Wait for it to connect...
 	if (!_pSocket->waitForConnected(5000)) {
-		ui.chatBox->appendPlainText("Failed to connect... Type !ip to change ip again.");
+		ui.chatBox->appendPlainText("Failed to connect... Press \"F1\" to change host!");
+	}
+}
+
+// Override keyPressEvent
+void vldrChatQt::keyPressEvent(QKeyEvent *event)
+{
+	// Check if user pressed F1 key.
+	if (event->key() == Qt::Key_F1) {
+		// Open login page.
+		_pSocket->close();
+
+		OpenLoginPage();
 	}
 }
 

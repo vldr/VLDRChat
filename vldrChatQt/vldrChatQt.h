@@ -59,6 +59,9 @@ private:
 
 	Ui::vldrChatQtClass ui;
 
+	void keyPressEvent(QKeyEvent *event);
+
+	void OpenLoginPage();
 	void SendMessage();
 	void AttemptConnection();
 	void ProcessCommands();
