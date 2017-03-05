@@ -123,6 +123,20 @@ padding:3px</string>
     <bool>true</bool>
    </property>
   </widget>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>-50</x>
+     <y>0</y>
+     <width>461</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-top:2px solid rgb(0, 246, 122);
+background:none;</string>
+   </property>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

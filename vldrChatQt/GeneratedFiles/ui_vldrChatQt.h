@@ -37,7 +37,7 @@ public:
     {
         if (vldrChatQtClass->objectName().isEmpty())
             vldrChatQtClass->setObjectName(QStringLiteral("vldrChatQtClass"));
-        vldrChatQtClass->resize(441, 344);
+        vldrChatQtClass->resize(441, 340);
         QFont font;
         font.setFamily(QStringLiteral("MS Shell Dlg 2"));
         font.setPointSize(9);
@@ -112,7 +112,8 @@ public:
         widget = new QWidget(centralWidget);
         widget->setObjectName(QStringLiteral("widget"));
         widget->setGeometry(QRect(-10, 0, 461, 20));
-        widget->setStyleSheet(QStringLiteral("border-top:2px solid rgb(0, 246, 123);"));
+        widget->setStyleSheet(QLatin1String("border-top:2px solid rgb(0, 246, 122);\n"
+"background:none;"));
         vldrChatQtClass->setCentralWidget(centralWidget);
         widget->raise();
         usersList->raise();

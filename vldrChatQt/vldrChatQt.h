@@ -57,6 +57,7 @@ private:
 	int port = 5555;
 	QString ip = "127.0.0.1";
 
+	
 	QTcpSocket * _pSocket;
 
 	QWidget * stored_parent;

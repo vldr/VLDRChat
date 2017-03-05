@@ -29,6 +29,7 @@ public:
     QPushButton *connectButton;
     QFrame *frame;
     QLabel *label;
+    QWidget *widget;
 
     void setupUi(QWidget *vldrIntroQt)
     {
@@ -88,6 +89,11 @@ public:
 "padding:3px"));
         label->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
         label->setWordWrap(true);
+        widget = new QWidget(vldrIntroQt);
+        widget->setObjectName(QStringLiteral("widget"));
+        widget->setGeometry(QRect(-50, 0, 461, 20));
+        widget->setStyleSheet(QLatin1String("border-top:2px solid rgb(0, 246, 122);\n"
+"background:none;"));
 
         retranslateUi(vldrIntroQt);
 

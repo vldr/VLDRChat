@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>441</width>
-    <height>344</height>
+    <height>340</height>
    </rect>
   </property>
   <property name="font">
@@ -144,7 +144,8 @@ QPushButton:pressed {
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-top:2px solid rgb(0, 246, 123);</string>
+     <string notr="true">border-top:2px solid rgb(0, 246, 122);
+background:none;</string>
     </property>
    </widget>
    <zorder>widget</zorder>

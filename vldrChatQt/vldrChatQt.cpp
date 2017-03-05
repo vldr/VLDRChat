@@ -6,6 +6,7 @@ vldrChatQt::vldrChatQt(QWidget *parent, QString ip) : QMainWindow(parent)
 	// Setup ui.
 	ui.setupUi(this);
 
+	// Store the parent window for later use.
 	stored_parent = parent;
 
 	// Initalize icon variable.
@@ -36,7 +37,8 @@ vldrChatQt::vldrChatQt(QWidget *parent, QString ip) : QMainWindow(parent)
 	// Initalize socket.
 	_pSocket = new QTcpSocket(this);
 
-	// Check the set the proxy.
+	// Check the set the proxy. Serves no purpose
+	// TODO: Remove this eventually...
 	_pSocket->setProxy(QNetworkProxy::NoProxy); 
 
 	// Attempt to connect.
@@ -50,7 +52,7 @@ vldrChatQt::vldrChatQt(QWidget *parent, QString ip) : QMainWindow(parent)
 	// Connect the enter button to send message.
 	connect(ui.messageBox, &QLineEdit::returnPressed, [this] {
 		SendMessage();
-	}); 
+	});  
 
 	// Scroll down when text changes.
 	connect(ui.chatBox, &QPlainTextEdit::textChanged, [this] {
@@ -69,9 +71,10 @@ vldrChatQt::vldrChatQt(QWidget *parent, QString ip) : QMainWindow(parent)
 	});
 }
 
-// Deconstructor.
+// Deconstructor. This is ran when the window is deleted.
 vldrChatQt::~vldrChatQt()
 {
+	// Delete the socket, and leave nothing behind.
 	delete[] _pSocket;
 }
 
