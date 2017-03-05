@@ -78,16 +78,18 @@ void vldrChatQt::ProcessCommands() {
 
 			ui.usersList->clear();
 
-			for (QString item : lineList)
+			for (QString item : lineList) {
 				ui.usersList->addItem(item);
+			}
 
 			continue;
 		}
 
-		QString colors[7];
-		colors[0] = "#ffff00"; colors[1] = "#ff0000"; colors[2] = "#ff9400"; colors[3] = "#94ff00";
-		colors[4] = "#00ff83"; colors[5] = "#00bbff"; colors[6] = "#f600ff";
+		if (line == "{clear}") {
+			ui.chatBox->clear();
+			continue;
+		}
 
-		ui.chatBox->appendHtml(QString("<span style=\"color:") +  QString(colors[qrand() % 7]) + QString("\">")  + line + QString("</span>"));
+		ui.chatBox->appendHtml(QString("<span style=\"color:") + "white" + QString("\">")  + line + QString("</span>"));
 	}
 }
