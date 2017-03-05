@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>vldrIntroQt</class>
+ <widget class="QWidget" name="vldrIntroQt">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>280</width>
+    <height>206</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>vldrIntroQt</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">
+QWidget {
+	background-color:rgb(45, 45, 45);
+	
+}</string>
+  </property>
+  <widget class="QLineEdit" name="ipBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>100</y>
+     <width>261</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border:1px solid rgb(27, 27, 27);
+
+background-color:rgb(37, 37, 37);
+color:white;
+padding:5px;
+font-size:18px;
+border-radius:3px;</string>
+   </property>
+   <property name="placeholderText">
+    <string>Address, ex: 127.0.0.1</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="connectButton">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>150</y>
+     <width>111</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+border:1px solid rgb(27, 27, 27);
+border-bottom:2px solid rgb(27, 27, 27);
+
+background-color:rgb(37, 37, 37);
+color:rgb(173, 173, 173);
+border-radius: 3px;
+}
+
+QPushButton:hover {
+	color:white;
+}
+
+QPushButton:pressed {
+	border-bottom:0px solid gray;
+}</string>
+   </property>
+   <property name="text">
+    <string>Connect</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>-70</x>
+     <y>0</y>
+     <width>461</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-top:2px solid rgb(113, 255, 5);</string>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,20 @@
+#pragma once
+
+#include <QWidget>
+#include "ui_vldrIntroQt.h"
+
+#include "vldrChatQt.h"
+
+#include <memory>
+
+class vldrIntroQt : public QWidget
+{
+	Q_OBJECT
+
+public:
+	vldrIntroQt(QWidget *parent = Q_NULLPTR);
+
+	std::shared_ptr<vldrChatQt> * win = nullptr;
+private:
+	Ui::vldrIntroQt ui;
+};

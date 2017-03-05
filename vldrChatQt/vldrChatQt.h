@@ -19,8 +19,9 @@ class vldrChatQt : public QMainWindow
 	Q_OBJECT
 
 public:
-	vldrChatQt(QWidget *parent = Q_NULLPTR);
-	
+	vldrChatQt(QWidget *parent = Q_NULLPTR, QString ip = "127.0.0.1");
+	~vldrChatQt();
+
 private:
 	QString scrollBarStyle = "QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {"
 		"background: none;"
@@ -52,14 +53,18 @@ private:
 		"border-radius:5px;"
 		"}";
 
-	QString ip = "127.0.0.1";
 	int port = 5555;
+	QString ip = "127.0.0.1";
 
 	QTcpSocket * _pSocket;
+
+	QWidget * stored_parent;
 
 	Ui::vldrChatQtClass ui;
 
 	void keyPressEvent(QKeyEvent *event);
+
+	
 
 	void OpenLoginPage();
 	void SendMessage();

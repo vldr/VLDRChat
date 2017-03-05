@@ -1,15 +1,21 @@
 #include "vldrChatQt.h"
+#include "vldrIntroQt.h"
 
-vldrChatQt::vldrChatQt(QWidget *parent) : QMainWindow(parent)
+vldrChatQt::vldrChatQt(QWidget *parent, QString ip) : QMainWindow(parent)
 {
 	// Setup ui.
 	ui.setupUi(this);
+
+	stored_parent = parent;
 
 	// Initalize icon variable.
 	QIcon icon(":/vldrChatQt/VLDRIcon.png");
 
 	// Set window icon.
 	setWindowIcon(icon);
+
+	// When the window closes, delete itself from memory.
+	this->setAttribute(Qt::WA_DeleteOnClose);
 
 	// Set custom title.
 	setWindowTitle("VLDR Chat (" + QString(__DATE__) + ")");
@@ -32,9 +38,14 @@ vldrChatQt::vldrChatQt(QWidget *parent) : QMainWindow(parent)
 
 	// Check the set the proxy.
 	_pSocket->setProxy(QNetworkProxy::NoProxy);
-	
-	// Display initial login page.
-	OpenLoginPage();
+
+	// Attempt to connect.
+	_pSocket->connectToHost(ip, port);
+
+	// Wait for it to connect... 
+	if (!_pSocket->waitForConnected(1000)) {
+		ui.chatBox->appendPlainText("Failed to connect... Press \"F1\" to change host!");
+	}
 
 	// Connect the enter button to send message.
 	connect(ui.messageBox, &QLineEdit::returnPressed, [this] {
@@ -49,6 +60,7 @@ vldrChatQt::vldrChatQt(QWidget *parent) : QMainWindow(parent)
 	// Send message when send button is pressed.
 	connect(ui.sendButton, &QPushButton::clicked, [this] {
 		SendMessage();
+		
 	});
 	 
 	// Process information when it's ready..
@@ -57,25 +69,19 @@ vldrChatQt::vldrChatQt(QWidget *parent) : QMainWindow(parent)
 	});
 }
 
+// Deconstructor.
+vldrChatQt::~vldrChatQt()
+{
+	delete[] _pSocket;
+}
+
 // Display login page
 void vldrChatQt::OpenLoginPage() {
-	// Question user for ip address.
-	bool ok;
-	QString text = QInputDialog::getText(this, tr("Please enter an address!"),
-		tr("Please enter a ip address:"), QLineEdit::Normal,
-		"", &ok);
+	// Show the intro window.
+	stored_parent->show();
 
-	// Check if it's okay...
-	if (ok && !text.isEmpty())
-		ip = text;
-
-	// Attempt to connect.
-	_pSocket->connectToHost(ip, port);
-
-	// Wait for it to connect...
-	if (!_pSocket->waitForConnected(1000)) {
-		ui.chatBox->appendPlainText("Failed to connect... Press \"F1\" to change host!");
-	}
+	// Close this window, and delete off of memory.
+	this->close();
 }
 
 // Override keyPressEvent
@@ -83,9 +89,6 @@ void vldrChatQt::keyPressEvent(QKeyEvent *event)
 {
 	// Check if user pressed F1 key.
 	if (event->key() == Qt::Key_F1) {
-		// Open login page.
-		_pSocket->close();
-
 		OpenLoginPage();
 	}
 }
@@ -109,16 +112,13 @@ void vldrChatQt::SendMessage() {
 
 // Reattempts to connect.
 void vldrChatQt::AttemptConnection() {
-	// Inform user that it failed to connect, and it's reattempting.
-	ui.chatBox->appendPlainText("Failed to connect to server, attempting to reconnect...");
-
 	// Attempt to connect.
 	_pSocket->connectToHost(ip, port);
 
 	// Wait for connected.
-	if (!_pSocket->waitForConnected(5000)) {
+	if (!_pSocket->waitForConnected(1000)) {
 		// Inform user that it failed to connect.
-		ui.chatBox->appendPlainText("Failed to connect...");
+		ui.chatBox->appendPlainText("Attempted to connect, but failed to connect...");
 	}
 }
 
