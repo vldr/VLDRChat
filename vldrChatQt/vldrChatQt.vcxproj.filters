@@ -71,5 +71,15 @@
     <ClInclude Include="GeneratedFiles\ui_vldrChatQt.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="vldrChatQt.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon1.ico" />
+    <Image Include="VLDRIcon.ico" />
   </ItemGroup>
 </Project>

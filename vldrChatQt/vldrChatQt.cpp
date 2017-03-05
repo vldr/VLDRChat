@@ -73,7 +73,7 @@ void vldrChatQt::OpenLoginPage() {
 	_pSocket->connectToHost(ip, port);
 
 	// Wait for it to connect...
-	if (!_pSocket->waitForConnected(5000)) {
+	if (!_pSocket->waitForConnected(1000)) {
 		ui.chatBox->appendPlainText("Failed to connect... Press \"F1\" to change host!");
 	}
 }
