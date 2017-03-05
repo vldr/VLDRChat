@@ -7,6 +7,7 @@
 #include <QScrollBar>
 #include <QTcpSocket>
 #include <QNetworkProxy>
+#include <QInputDialog>
 
 #include <iomanip> 
 
