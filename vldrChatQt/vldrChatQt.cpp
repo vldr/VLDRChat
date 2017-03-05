@@ -37,7 +37,7 @@ vldrChatQt::vldrChatQt(QWidget *parent, QString ip) : QMainWindow(parent)
 	_pSocket = new QTcpSocket(this);
 
 	// Check the set the proxy.
-	_pSocket->setProxy(QNetworkProxy::NoProxy);
+	_pSocket->setProxy(QNetworkProxy::NoProxy); 
 
 	// Attempt to connect.
 	_pSocket->connectToHost(ip, port);

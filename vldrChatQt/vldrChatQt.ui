@@ -85,7 +85,8 @@ background-color:rgb(37, 37, 37);
 color:white;
 border-radius-right:2px;
 padding:5px;
-font-size:18px;</string>
+font-size:18px;
+border-radius:2px;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="sendButton">
@@ -104,6 +105,8 @@ border-bottom:2px solid rgb(27, 27, 27);
 
 background-color:rgb(37, 37, 37);
 color:rgb(173, 173, 173);
+border-top-right-radius: 3px;
+border-bottom-right-radius: 3px;
 }
 
 QPushButton:hover {

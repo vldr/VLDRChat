@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>280</width>
-    <height>206</height>
+    <width>251</width>
+    <height>203</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,7 +25,7 @@ QWidget {
     <rect>
      <x>10</x>
      <y>100</y>
-     <width>261</width>
+     <width>231</width>
      <height>41</height>
     </rect>
    </property>
@@ -86,8 +86,61 @@ QPushButton:pressed {
     <string notr="true">border-top:2px solid rgb(113, 255, 5);</string>
    </property>
   </widget>
+  <widget class="QFrame" name="frame">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>20</y>
+     <width>61</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/vldrChatQt/VLDRIconThumbnail2.png) 0 0 0 0 stretch stretch;</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>20</y>
+     <width>161</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>MS Gothic</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:rgb(0, 252, 127);
+padding-left:1px;
+padding-top:-2px;
+background-color:rgb(0,0,0,50);
+border-radius:5px;
+padding:2px</string>
+   </property>
+   <property name="text">
+    <string>Type an address to connect to a VLDR server. This whole project is open source.</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="vldrChatQt.qrc"/>
+ </resources>
  <connections/>
 </ui>

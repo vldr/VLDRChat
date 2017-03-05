@@ -79,7 +79,8 @@ public:
 "color:white;\n"
 "border-radius-right:2px;\n"
 "padding:5px;\n"
-"font-size:18px;"));
+"font-size:18px;\n"
+"border-radius:2px;"));
         sendButton = new QPushButton(centralWidget);
         sendButton->setObjectName(QStringLiteral("sendButton"));
         sendButton->setGeometry(QRect(330, 290, 101, 41));
@@ -89,6 +90,8 @@ public:
 "\n"
 "background-color:rgb(37, 37, 37);\n"
 "color:rgb(173, 173, 173);\n"
+"border-top-right-radius: 3px;\n"
+"border-bottom-right-radius: 3px;\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"

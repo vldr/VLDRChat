@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="vldrChatQt">
+    <file>VLDRIconThumbnail2.png</file>
+    <file>VLDRIconThumbnail.png</file>
     <file>VLDRIcon.png</file>
   </qresource>
 </RCC>
