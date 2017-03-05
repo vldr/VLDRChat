@@ -8,6 +8,14 @@ vldrChatQt::vldrChatQt(QWidget *parent) : QMainWindow(parent)
 
 	setWindowIcon(icon);
 
+	QScrollBar * customScrollBarChatBox = new QScrollBar();
+	QScrollBar * customScrollBarUserList = new QScrollBar();
+	customScrollBarChatBox->setStyleSheet(scrollBarStyle);
+	customScrollBarUserList->setStyleSheet(scrollBarStyle);
+
+	ui.chatBox->setVerticalScrollBar(customScrollBarChatBox);
+	ui.usersList->setVerticalScrollBar(customScrollBarUserList);
+
 	_pSocket = new QTcpSocket(this);
 	_pSocket->setProxy(QNetworkProxy::NoProxy);
 	_pSocket->connectToHost(ip, port);
@@ -29,7 +37,7 @@ vldrChatQt::vldrChatQt(QWidget *parent) : QMainWindow(parent)
 	});
 
 	if (!_pSocket->waitForConnected(5000)) {
-		ui.chatBox->appendPlainText("Failed to connect...");
+		ui.chatBox->appendPlainText("Failed to connect... Type something to attempt to reconnect...");
 	}
 }
 
@@ -76,6 +84,10 @@ void vldrChatQt::ProcessCommands() {
 			continue;
 		}
 
-		ui.chatBox->appendPlainText(line);
+		QString colors[7];
+		colors[0] = "#ffff00"; colors[1] = "#ff0000"; colors[2] = "#ff9400"; colors[3] = "#94ff00";
+		colors[4] = "#00ff83"; colors[5] = "#00bbff"; colors[6] = "#f600ff";
+
+		ui.chatBox->appendHtml(QString("<span style=\"color:") +  QString(colors[qrand() % 7]) + QString("\">")  + line + QString("</span>"));
 	}
 }
