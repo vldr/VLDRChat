@@ -7,7 +7,7 @@
 
 #include <memory>
 
-class vldrIntroQt : public QWidget
+class vldrIntroQt : public QMainWindow
 {
 	Q_OBJECT
 

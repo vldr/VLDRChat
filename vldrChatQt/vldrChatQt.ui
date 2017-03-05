@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>442</width>
-    <height>343</height>
+    <width>441</width>
+    <height>344</height>
    </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>MS Shell Dlg 2</family>
+    <pointsize>9</pointsize>
+   </font>
   </property>
   <property name="windowTitle">
    <string>vldrChatQt</string>
@@ -17,7 +23,8 @@
    <property name="styleSheet">
     <string notr="true">
 QWidget {
-	background-color:rgb(45, 45, 45);
+background-image: url(&quot;:/vldrChatQt/cartographer.png&quot;);
+    background-repeat: repeat-y;
 	
 }</string>
    </property>
@@ -34,19 +41,23 @@ QWidget {
      <bool>false</bool>
     </property>
     <property name="styleSheet">
-     <string notr="true">border:1px solid rgb(27, 27, 27);
+     <string notr="true">QListWidget {
 
-background-color:rgb(37, 37, 37);
+border:1px solid rgb(27, 27, 27);
+background:none;
+background-color:rgb(43, 43, 43);
 color:white;
-border-radius:2px;</string>
+border-top-left-radius: 3px;
+border-bottom-left-radius: 3px;
+}</string>
     </property>
    </widget>
    <widget class="QPlainTextEdit" name="chatBox">
     <property name="geometry">
      <rect>
-      <x>110</x>
+      <x>100</x>
       <y>10</y>
-      <width>321</width>
+      <width>331</width>
       <height>271</height>
      </rect>
     </property>
@@ -59,10 +70,11 @@ border-radius:2px;</string>
     <property name="styleSheet">
      <string notr="true">QPlainTextEdit {
 border:1px solid rgb(27, 27, 27);
-
-background-color:rgb(37, 37, 37);
+background:none;
+background-color:rgb(43, 43, 43);
 color:white;
-border-radius:2px;
+border-top-right-radius: 3px;
+border-bottom-right-radius: 3px;
 }</string>
     </property>
     <property name="readOnly">
@@ -80,13 +92,15 @@ border-radius:2px;
     </property>
     <property name="styleSheet">
      <string notr="true">border:1px solid rgb(27, 27, 27);
-
-background-color:rgb(37, 37, 37);
+background:none;
+background-color:rgb(43, 43, 43);
 color:white;
-border-radius-right:2px;
 padding:5px;
 font-size:18px;
 border-radius:2px;</string>
+    </property>
+    <property name="placeholderText">
+     <string>Say something nice!</string>
     </property>
    </widget>
    <widget class="QPushButton" name="sendButton">
@@ -101,9 +115,8 @@ border-radius:2px;</string>
     <property name="styleSheet">
      <string notr="true">QPushButton {
 border:1px solid rgb(27, 27, 27);
-border-bottom:2px solid rgb(27, 27, 27);
-
-background-color:rgb(37, 37, 37);
+background:none;
+background-color:rgb(43, 43, 43);
 color:rgb(173, 173, 173);
 border-top-right-radius: 3px;
 border-bottom-right-radius: 3px;
@@ -131,7 +144,7 @@ QPushButton:pressed {
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-top:2px solid rgb(113, 255, 5);</string>
+     <string notr="true">border-top:2px solid rgb(0, 246, 123);</string>
     </property>
    </widget>
    <zorder>widget</zorder>

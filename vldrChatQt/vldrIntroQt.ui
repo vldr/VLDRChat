@@ -14,11 +14,8 @@
    <string>vldrIntroQt</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">
-QWidget {
-	background-color:rgb(45, 45, 45);
-	
-}</string>
+   <string notr="true">background-repeat: repeat;
+background-image: url(:/vldrChatQt/cartographer2.png)</string>
   </property>
   <widget class="QLineEdit" name="ipBox">
    <property name="geometry">
@@ -31,8 +28,8 @@ QWidget {
    </property>
    <property name="styleSheet">
     <string notr="true">border:1px solid rgb(27, 27, 27);
-
-background-color:rgb(37, 37, 37);
+background:none;
+background-color:rgb(43, 43, 43);
 color:white;
 padding:5px;
 font-size:18px;
@@ -55,8 +52,8 @@ border-radius:3px;</string>
     <string notr="true">QPushButton {
 border:1px solid rgb(27, 27, 27);
 border-bottom:2px solid rgb(27, 27, 27);
-
-background-color:rgb(37, 37, 37);
+background:none;
+background-color:rgb(43, 43, 43);
 color:rgb(173, 173, 173);
 border-radius: 3px;
 }
@@ -73,26 +70,13 @@ QPushButton:pressed {
     <string>Connect</string>
    </property>
   </widget>
-  <widget class="QWidget" name="widget" native="true">
-   <property name="geometry">
-    <rect>
-     <x>-70</x>
-     <y>0</y>
-     <width>461</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border-top:2px solid rgb(113, 255, 5);</string>
-   </property>
-  </widget>
   <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>20</y>
-     <width>61</width>
-     <height>61</height>
+     <width>71</width>
+     <height>71</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -108,27 +92,29 @@ QPushButton:pressed {
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>80</x>
+     <x>90</x>
      <y>20</y>
-     <width>161</width>
-     <height>61</height>
+     <width>151</width>
+     <height>71</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>MS Gothic</family>
+     <family>MS Shell Dlg 2</family>
+     <pointsize>11</pointsize>
     </font>
    </property>
    <property name="styleSheet">
     <string notr="true">color:rgb(0, 252, 127);
 padding-left:1px;
 padding-top:-2px;
+background:none;
 background-color:rgb(0,0,0,50);
-border-radius:5px;
-padding:2px</string>
+border-radius:3px;
+padding:3px</string>
    </property>
    <property name="text">
-    <string>Type an address to connect to a VLDR server. This whole project is open source.</string>
+    <string>Type an address to connect to a VLDR server.</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>

@@ -1,6 +1,6 @@
 #include "vldrIntroQt.h"
 
-vldrIntroQt::vldrIntroQt(QWidget *parent) : QWidget(parent)
+vldrIntroQt::vldrIntroQt(QWidget *parent) : QMainWindow(parent)
 {
 	ui.setupUi(this);
 
