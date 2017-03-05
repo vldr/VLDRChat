@@ -28,6 +28,7 @@ private:
 
 	Ui::vldrChatQtClass ui;
 
+	void SendMessage();
 	void AttemptConnection();
 	void ProcessCommands();
 };
