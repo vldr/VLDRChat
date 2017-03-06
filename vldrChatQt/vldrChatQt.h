@@ -19,7 +19,7 @@ class vldrChatQt : public QMainWindow
 	Q_OBJECT
 
 public:
-	vldrChatQt(QWidget *parent = Q_NULLPTR, QString ip = "127.0.0.1");
+	vldrChatQt(QWidget *parent = Q_NULLPTR, QString ip = "127.0.0.1", QWidget *callingwindow = Q_NULLPTR);
 	~vldrChatQt();
 
 private:

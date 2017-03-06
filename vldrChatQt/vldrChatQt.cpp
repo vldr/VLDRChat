@@ -1,13 +1,13 @@
 #include "vldrChatQt.h"
 #include "vldrIntroQt.h"
 
-vldrChatQt::vldrChatQt(QWidget *parent, QString ip) : QMainWindow(parent)
+vldrChatQt::vldrChatQt(QWidget *parent, QString ip, QWidget * callingwindow) : QMainWindow(parent)
 {
 	// Setup ui.
 	ui.setupUi(this);
 
 	// Store the parent window for later use.
-	stored_parent = parent;
+	stored_parent = callingwindow;
 
 	// Initalize icon variable.
 	QIcon icon(":/vldrChatQt/VLDRIcon.png");
