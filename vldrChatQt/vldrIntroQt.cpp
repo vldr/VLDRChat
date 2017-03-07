@@ -20,10 +20,10 @@ vldrIntroQt::vldrIntroQt(QWidget *parent) : QMainWindow(parent)
 	// Connect the button click.
 	connect(ui.connectButton, &QPushButton::clicked, [this] {
 		// Create a raw pointer replacing a nullptr.
-		win = new vldrChatQt(Q_NULLPTR, ui.ipBox->text(), this);
+		win = new std::shared_ptr<vldrChatQt> (new vldrChatQt(Q_NULLPTR, ui.ipBox->text(), this));
 
 		// Actually display the window.
-		win->show();
+		win->get()->show();
 
 		// Close this window when done.
 		this->hide();

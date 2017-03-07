@@ -14,7 +14,7 @@ class vldrIntroQt : public QMainWindow
 public:
 	vldrIntroQt(QWidget *parent = Q_NULLPTR);
 
-	/*std::shared_ptr<*/vldrChatQt/*>*/ * win = nullptr;
+	std::shared_ptr<vldrChatQt> * win = nullptr;
 private:
 	Ui::vldrIntroQt ui;
 };

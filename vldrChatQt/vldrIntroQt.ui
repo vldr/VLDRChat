@@ -105,7 +105,7 @@ QPushButton:pressed {
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color:rgb(0, 252, 127);
+    <string notr="true">color:white;
 padding-left:1px;
 padding-top:-2px;
 background:none;

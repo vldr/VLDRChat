@@ -17,6 +17,8 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QMenu>
+#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
@@ -26,22 +28,43 @@ QT_BEGIN_NAMESPACE
 class Ui_vldrChatQtClass
 {
 public:
+    QAction *actionLogin;
+    QAction *actionExit;
+    QAction *actionVersion;
+    QAction *actionAbout;
+    QAction *actionSend_Message;
+    QAction *actionClear;
     QWidget *centralWidget;
     QListWidget *usersList;
     QPlainTextEdit *chatBox;
     QLineEdit *messageBox;
     QPushButton *sendButton;
     QWidget *widget;
+    QMenuBar *menuBar;
+    QMenu *menuFile;
+    QMenu *menuHelp;
 
     void setupUi(QMainWindow *vldrChatQtClass)
     {
         if (vldrChatQtClass->objectName().isEmpty())
             vldrChatQtClass->setObjectName(QStringLiteral("vldrChatQtClass"));
-        vldrChatQtClass->resize(441, 340);
+        vldrChatQtClass->resize(441, 361);
         QFont font;
         font.setFamily(QStringLiteral("MS Shell Dlg 2"));
         font.setPointSize(9);
         vldrChatQtClass->setFont(font);
+        actionLogin = new QAction(vldrChatQtClass);
+        actionLogin->setObjectName(QStringLiteral("actionLogin"));
+        actionExit = new QAction(vldrChatQtClass);
+        actionExit->setObjectName(QStringLiteral("actionExit"));
+        actionVersion = new QAction(vldrChatQtClass);
+        actionVersion->setObjectName(QStringLiteral("actionVersion"));
+        actionAbout = new QAction(vldrChatQtClass);
+        actionAbout->setObjectName(QStringLiteral("actionAbout"));
+        actionSend_Message = new QAction(vldrChatQtClass);
+        actionSend_Message->setObjectName(QStringLiteral("actionSend_Message"));
+        actionClear = new QAction(vldrChatQtClass);
+        actionClear->setObjectName(QStringLiteral("actionClear"));
         centralWidget = new QWidget(vldrChatQtClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         centralWidget->setStyleSheet(QLatin1String("\n"
@@ -120,6 +143,43 @@ public:
         chatBox->raise();
         messageBox->raise();
         sendButton->raise();
+        menuBar = new QMenuBar(vldrChatQtClass);
+        menuBar->setObjectName(QStringLiteral("menuBar"));
+        menuBar->setGeometry(QRect(0, 0, 441, 21));
+        menuBar->setStyleSheet(QLatin1String("QMenuBar {\n"
+"background-color:rgb(0, 197, 95);\n"
+"color:black;\n"
+"}\n"
+"\n"
+"QMenuBar::item:hover {\n"
+"\n"
+"background-color:rgb(43, 43, 43);\n"
+"color:white;\n"
+"}\n"
+"\n"
+"QMenuBar::item:hover {\n"
+"background-color:rgb(53, 53, 53);\n"
+"}"));
+        menuFile = new QMenu(menuBar);
+        menuFile->setObjectName(QStringLiteral("menuFile"));
+        menuFile->setStyleSheet(QLatin1String("QMenu {\n"
+"background-color:rgb(43, 43, 43);\n"
+"color:white;\n"
+"}"));
+        menuHelp = new QMenu(menuBar);
+        menuHelp->setObjectName(QStringLiteral("menuHelp"));
+        menuHelp->setStyleSheet(QLatin1String("background-color:rgb(43, 43, 43);\n"
+"color:white;"));
+        vldrChatQtClass->setMenuBar(menuBar);
+
+        menuBar->addAction(menuFile->menuAction());
+        menuBar->addAction(menuHelp->menuAction());
+        menuFile->addAction(actionLogin);
+        menuFile->addAction(actionSend_Message);
+        menuFile->addAction(actionClear);
+        menuFile->addSeparator();
+        menuFile->addAction(actionExit);
+        menuHelp->addAction(actionAbout);
 
         retranslateUi(vldrChatQtClass);
 
@@ -129,8 +189,17 @@ public:
     void retranslateUi(QMainWindow *vldrChatQtClass)
     {
         vldrChatQtClass->setWindowTitle(QApplication::translate("vldrChatQtClass", "vldrChatQt", Q_NULLPTR));
+        actionLogin->setText(QApplication::translate("vldrChatQtClass", "New...", Q_NULLPTR));
+        actionLogin->setShortcut(QApplication::translate("vldrChatQtClass", "F1", Q_NULLPTR));
+        actionExit->setText(QApplication::translate("vldrChatQtClass", "Quit...", Q_NULLPTR));
+        actionVersion->setText(QApplication::translate("vldrChatQtClass", "Version", Q_NULLPTR));
+        actionAbout->setText(QApplication::translate("vldrChatQtClass", "About", Q_NULLPTR));
+        actionSend_Message->setText(QApplication::translate("vldrChatQtClass", "Send...", Q_NULLPTR));
+        actionClear->setText(QApplication::translate("vldrChatQtClass", "Clear...", Q_NULLPTR));
         messageBox->setPlaceholderText(QApplication::translate("vldrChatQtClass", "Say something nice!", Q_NULLPTR));
         sendButton->setText(QApplication::translate("vldrChatQtClass", "Send", Q_NULLPTR));
+        menuFile->setTitle(QApplication::translate("vldrChatQtClass", "File", Q_NULLPTR));
+        menuHelp->setTitle(QApplication::translate("vldrChatQtClass", "Help", Q_NULLPTR));
     } // retranslateUi
 
 };

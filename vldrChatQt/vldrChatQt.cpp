@@ -16,7 +16,7 @@ vldrChatQt::vldrChatQt(QWidget *parent, QString ip, QWidget * callingwindow) : Q
 	setWindowIcon(icon);
 
 	// When the window closes, delete itself from memory.
-	this->setAttribute(Qt::WA_DeleteOnClose);
+	setAttribute(Qt::WA_DeleteOnClose);
 
 	// Set custom title.
 	setWindowTitle("VLDR Chat (" + QString(__DATE__) + ")");
@@ -62,13 +62,44 @@ vldrChatQt::vldrChatQt(QWidget *parent, QString ip, QWidget * callingwindow) : Q
 	// Send message when send button is pressed.
 	connect(ui.sendButton, &QPushButton::clicked, [this] {
 		SendMessage();
-		
 	});
 	 
 	// Process information when it's ready..
 	connect(_pSocket, &QTcpSocket::readyRead, [this] {
 		ProcessCommands();
 	});
+
+	// Send message if sendmessage action is triggered.
+	connect(ui.actionSend_Message, &QAction::triggered, [this] {
+		SendMessage();
+	});
+
+	// Present login page if new... button is triggered.
+	connect(ui.actionLogin, &QAction::triggered, [this] {
+		OpenLoginPage();
+	});
+
+	// Present about page if about is pressed.
+	connect(ui.actionAbout, &QAction::triggered, [this] {
+		QMessageBox messageBox;
+		messageBox.setIconPixmap(QPixmap(":/vldrChatQt/VLDRIconThumbnail.png"));
+		messageBox.setText("<b>Build Date:</b><br>" + QString(__DATE__) + " " +
+			QString(__TIME__) + "<br><br><b>Description:</b><br> VLDRChat is a chat client for VLDR servers.<br><br><b>Open Source:</b><br>The source code is publicly available: <br><a href='https://github.com/vldr/VLDRChat'>https://github.com/vldr/VLDRChat</a><br>");
+		messageBox.setWindowTitle("About");
+		messageBox.setWindowIcon(QIcon(":/vldrChatQt/VLDRIcon.png"));
+		messageBox.exec();
+	});
+
+	// Exit if action is pressed.
+	connect(ui.actionExit, &QAction::triggered, [this] {
+		close();
+	});
+
+	// Clear if action is pressed.
+	connect(ui.actionClear, &QAction::triggered, [this] {
+		ui.chatBox->clear();
+	});
+
 }
 
 // Deconstructor. This is ran when the window is deleted.
@@ -82,9 +113,6 @@ vldrChatQt::~vldrChatQt()
 void vldrChatQt::OpenLoginPage() {
 	// Show the intro window.
 	stored_parent->show();
-
-	// Close this window, and delete off of memory.
-	this->close();
 }
 
 // Override keyPressEvent

@@ -8,6 +8,7 @@
 #include <QTcpSocket>
 #include <QNetworkProxy>
 #include <QInputDialog>
+#include <QMessageBox>
 
 #include <iomanip> 
 

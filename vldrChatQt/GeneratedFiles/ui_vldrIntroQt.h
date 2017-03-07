@@ -80,7 +80,7 @@ public:
         font.setFamily(QStringLiteral("MS Shell Dlg 2"));
         font.setPointSize(11);
         label->setFont(font);
-        label->setStyleSheet(QLatin1String("color:rgb(0, 252, 127);\n"
+        label->setStyleSheet(QLatin1String("color:white;\n"
 "padding-left:1px;\n"
 "padding-top:-2px;\n"
 "background:none;\n"
